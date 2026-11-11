@@ -51,21 +51,30 @@ GRANT ALL PRIVILEGES ON DATABASE sonarqube to sonar;
 exit
 
 //download and install SonarQube
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.6.0.39681.zip
-sudo apt-get -y install unzip
-sudo unzip sonarqube*.zip -d /opt
-sudo mv /opt/sonarqube-8.6.0.39681 /opt/sonarqube -v
+//sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.6.0.39681.zip
+//sudo apt-get -y install unzip
+//sudo unzip sonarqube*.zip -d /opt
+/sudo mv /opt/sonarqube-8.6.0.39681 /opt/sonarqube -v
 
 //create group
-sudo groupadd sonarGroup
+//sudo groupadd sonarGroup
 
 //add sonar user to sonarGroup
-sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonarGroup sonar
+//sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonarGroup sonar
 
 //grant access for sonar user to sonarqube directory
-sudo chown sonar:sonarGroup /opt/sonarqube -R
+//sudo chown sonar:sonarGroup /opt/sonarqube -R
 
-//edit the properties file
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-26.11.0.134175.zip
+sudo apt-get -y install unzip
+sudo unzip sonarqube-26.11.0.134175.zip -d /opt
+sudo mv /opt/sonarqube-26.11.0.134175 /opt/sonarqube
+
+sudo groupadd sonarGroup
+sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonarGroup sonar
+sudo chown -R sonar:sonarGroup /opt/sonarqube
+
+edit the properties file
 sudo vi /opt/sonarqube/conf/sonar.properties
 sonar.jdbc.username=sonar
 sonar.jdbc.password=password
